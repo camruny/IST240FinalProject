@@ -4,17 +4,12 @@
  * and open the template in the editor.
  */
 
+package artwork;
+
 /**
  *
  * @author Cameron
  */
-public class app {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        JFrame jf = new JFrame();
-    }
+public class logoJpanel {
     
 }
