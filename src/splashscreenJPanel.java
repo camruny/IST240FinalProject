@@ -20,7 +20,7 @@ public class splashscreenJPanel extends JPanel {
     private JLabel label1;
     
     public splashscreenJPanel() {
-        setBackground(Color.white);
+        setBackground(Color.blue);
         
       
    
