@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.awt.FlowLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -16,8 +19,8 @@ import javax.swing.JTextField;
 public class splashscreenJPanel extends JPanel {
     
     JTextField placeHolder;
-    private ImageIcon image1;
-    private JLabel label1;
+    private final ImageIcon image1;
+    private final JLabel label1;
     
     public splashscreenJPanel() {
         setBackground(Color.blue);
