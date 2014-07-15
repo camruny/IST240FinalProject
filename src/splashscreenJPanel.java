@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
