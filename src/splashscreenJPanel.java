@@ -16,12 +16,19 @@ import javax.swing.JTextField;
 public class splashscreenJPanel extends JPanel {
     
     JTextField placeHolder;
+    private ImageIcon image1;
+    private JLabel label1;
     
     public splashscreenJPanel() {
         setBackground(Color.white);
         
-        placeHolder = new JTextField("Images will go here");
+      
+   
+        setLayout(new FlowLayout());
+        
+        image1 = new ImageIcon(getClass().getResource("Asteroid-002.jpg"));
+        label1 = new JLabel(image1);
+        add(label1);
     }
-
     
 }
