@@ -5,8 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.*;
-import javax.swing.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,8 +19,8 @@ import javax.swing.*;
 public class splashscreenJPanel extends JPanel {
     
     JTextField placeHolder;
-    private final ImageIcon image1;
-    private final JLabel label1;
+    private final ImageIcon asteroidPic;
+    private final JLabel asteroidLabel;
     
     public splashscreenJPanel() {
         setBackground(Color.blue);
@@ -31,9 +29,9 @@ public class splashscreenJPanel extends JPanel {
    
         setLayout(new FlowLayout());
         
-        image1 = new ImageIcon(getClass().getResource("Asteroid-002.jpg"));
-        label1 = new JLabel(image1);
-        add(label1);
+        asteroidPic = new ImageIcon(getClass().getResource("Asteroid-002.jpg"));
+        asteroidLabel = new JLabel(asteroidPic);
+        add(asteroidLabel);
     }
     
 }

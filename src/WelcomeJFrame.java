@@ -11,10 +11,10 @@
 import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class JFrame extends javax.swing.JFrame 
+public class WelcomeJFrame extends javax.swing.JFrame 
 {
 	introJPanel ijp;
-	public JFrame ()
+	public WelcomeJFrame ()
 	{
 		super ("PSU Asteroids");
 //------------------------------------------------------

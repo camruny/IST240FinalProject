@@ -20,7 +20,7 @@ public class introJPanel extends JPanel {
 		setBackground(Color.blue);
 		
 		setLayout(new BorderLayout());
-
+                
 		//Navigation panel that will contain the navigational JButtons
                 navigationJPanel nav = new navigationJPanel();
                 //Panel to contain artwork for the introduction page
@@ -28,7 +28,6 @@ public class introJPanel extends JPanel {
                 
                 add(nav, "South");
                 add(splashscreen, "North");
-
+                                       
     }
-    
 }
