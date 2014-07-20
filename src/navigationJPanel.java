@@ -21,7 +21,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton about;
     public navigationJPanel() {
         
-        x = new instructionsJPanel();
     newGame = new JButton("New Game");  
     add(newGame);
     newGame.addActionListener(this);
@@ -38,7 +37,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     add(about);
     about.addActionListener(this);
     
-    goBack = new JButton("Go Back");
 }
 
     public void actionPerformed(ActionEvent e) {
