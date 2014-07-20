@@ -1,4 +1,6 @@
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -12,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author Cameron
  */
-public class navigationJPanel extends JPanel {
+public class navigationJPanel extends JPanel implements ActionListener {
     JButton newGame;
     JButton options;
     JButton instructions;
@@ -30,5 +32,17 @@ public class navigationJPanel extends JPanel {
     about = new JButton("About");
     add(about);
 }
+
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        
+        if(obj == instructions) //not working
+        {
+            //Launches the Instructions JFrame
+            WelcomeJFrame jf = new WelcomeJFrame();
+            //test to see if the JButton is working
+            instructions.setText("Working");
+        }
+    }
     
 }

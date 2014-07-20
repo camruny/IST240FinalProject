@@ -1,5 +1,7 @@
 
+import static com.sun.javafx.fxml.expression.Expression.add;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,10 +15,15 @@ import javax.swing.JButton;
  */
 public class instructionsJPanel {
     JButton close;
+    JTextField instructions;
     
     instructionsJPanel()
     {
-        close = new JButton("Close");  
+        close = new JButton("Close");
+        add(close,"South");
+        
+        instructions = new JTextField("The instructions will go here.");
+        add(instructions, "North");
     }
     
 }
