@@ -19,18 +19,26 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton options;
     JButton instructions;
     JButton about;
-    
-    
     public navigationJPanel() {
-    
+        
+        x = new instructionsJPanel();
     newGame = new JButton("New Game");  
     add(newGame);
+    newGame.addActionListener(this);
+    
     options = new JButton("Options");
     add(options);
+    options.addActionListener(this);
+    
     instructions = new JButton("Instructions");
+    instructions.addActionListener(this);
     add(instructions);
+    
     about = new JButton("About");
     add(about);
+    about.addActionListener(this);
+    
+    goBack = new JButton("Go Back");
 }
 
     public void actionPerformed(ActionEvent e) {
@@ -38,10 +46,25 @@ public class navigationJPanel extends JPanel implements ActionListener {
         
         if(obj == instructions) //not working
         {
-            //insert code here to make the InstructionsJFrame visible
-            //test to see if the JButton is working
+            removeAll();
             instructions.setText("Working");
+          
+          
         }
+           if(obj == options) //not working
+        {
+            options.setText("Working");
+        }
+              if(obj == newGame) //not working
+        {
+            newGame.setText("Working");
+        }
+                 if(obj == about) //not working
+        {
+
+            about.setText("Working");
+        }
+ 
     }
     
 }
