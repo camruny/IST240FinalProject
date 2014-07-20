@@ -29,6 +29,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     add(options);
     instructions = new JButton("Instructions");
     add(instructions);
+    instructions.addActionListener(this);
     about = new JButton("About");
     add(about);
 }
@@ -39,8 +40,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
         if(obj == instructions) //not working
         {
             //insert code here to make the InstructionsJFrame visible
-            //test to see if the JButton is working
-            instructions.setText("Working");
         }
     }
     

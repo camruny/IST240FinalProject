@@ -25,7 +25,7 @@ public class instructionsJFrame extends JFrame {
 		//getContentPane().add(instruct,"Center");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);
-                setVisible(false);
+                setVisible(false);  //set to false to that the windows doesnt appear when the program runs
 	}
     
 }
