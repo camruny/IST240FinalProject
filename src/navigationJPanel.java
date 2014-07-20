@@ -19,19 +19,28 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton options;
     JButton instructions;
     JButton about;
-    
-    
     public navigationJPanel() {
-    
+        
     newGame = new JButton("New Game");  
     add(newGame);
+    newGame.addActionListener(this);
+    
     options = new JButton("Options");
     add(options);
+    options.addActionListener(this);
+    
     instructions = new JButton("Instructions");
-    add(instructions);
     instructions.addActionListener(this);
+    add(instructions);
+<<<<<<< HEAD
+    instructions.addActionListener(this);
+=======
+    
+>>>>>>> FETCH_HEAD
     about = new JButton("About");
     add(about);
+    about.addActionListener(this);
+    
 }
 
     public void actionPerformed(ActionEvent e) {
@@ -39,8 +48,29 @@ public class navigationJPanel extends JPanel implements ActionListener {
         
         if(obj == instructions) //not working
         {
+<<<<<<< HEAD
             //insert code here to make the InstructionsJFrame visible
+=======
+            removeAll();
+            instructions.setText("Working");
+          
+          
         }
+           if(obj == options) //not working
+        {
+            options.setText("Working");
+        }
+              if(obj == newGame) //not working
+        {
+            newGame.setText("Working");
+        }
+                 if(obj == about) //not working
+        {
+
+            about.setText("Working");
+>>>>>>> FETCH_HEAD
+        }
+ 
     }
     
 }
