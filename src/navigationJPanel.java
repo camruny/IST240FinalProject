@@ -38,8 +38,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
         
         if(obj == instructions) //not working
         {
-            //Launches the Instructions JFrame
-            WelcomeJFrame jf = new WelcomeJFrame();
+            //insert code here to make the InstructionsJFrame visible
             //test to see if the JButton is working
             instructions.setText("Working");
         }
