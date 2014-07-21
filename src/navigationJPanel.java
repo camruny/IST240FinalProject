@@ -25,6 +25,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     instructionsJFrame injf = new instructionsJFrame();
     aboutJFrame ajf = new aboutJFrame();
     optionsJFrame ojf = new optionsJFrame();
+    newGameJFrame ngjf = new newGameJFrame();
     
     public navigationJPanel() {
         
@@ -33,6 +34,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     injf.injp.close.addActionListener(this);
     ojf.ojp.close.addActionListener(this);
     ajf.ajp.close.addActionListener(this);
+    ngjf.ngjp.close.addActionListener(this);
         
     //====Options for the Navigational Buttons====
     newGame = new JButton("New Game");  
@@ -58,33 +60,17 @@ public class navigationJPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         
-        if(obj == instructions)
-            {
-            injf.setVisible(true);
-            }
-        if(obj == options)
-            {
-            ojf.setVisible(true);
-            }
-        if(obj == newGame) //not working
-            {
-            newGame.setText("Working");
-            }
-        if(obj == about)
-            {
-            ajf.setVisible(true);
-            }
-        if(obj == injf.injp.close)
-        {
-            //====Makes the INSTRUCTIONS JFrame invisible when the user clicks "Close"====
-            injf.setVisible(false);
-        }
-        if(obj == ojf.ojp.close) {
-            ojf.setVisible(false);
-        }
-        if(obj == ajf.ajp.close)    {
-            ajf.setVisible(false);
-        }
+        //====Opens the JFrames when the navigation buttons are clicked====
+        if(obj == instructions)     {injf.setVisible(true);}
+        if(obj == options)          {ojf.setVisible(true);}
+        if(obj == newGame)          {ngjf.setVisible(true);}
+        if(obj == about)            {ajf.setVisible(true);}
+        
+        //====Closes the JFrames when the user clicks "Close"====
+        if(obj == injf.injp.close)  {injf.setVisible(false);}
+        if(obj == ojf.ojp.close)    {ojf.setVisible(false);}
+        if(obj == ajf.ajp.close)    {ajf.setVisible(false);}
+        if(obj == ngjf.ngjp.close)  {ngjf.setVisible(false);}
     }
     
 }
