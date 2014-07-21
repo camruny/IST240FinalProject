@@ -23,7 +23,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
    
     //====adds the JFrames to the window====
     instructionsJFrame injf = new instructionsJFrame();
-    //aboutJFrame ajf = new aboutJFrame();
+    aboutJFrame ajf = new aboutJFrame();
     optionsJFrame ojf = new optionsJFrame();
     
     public navigationJPanel() {
@@ -32,6 +32,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     //====ActionListeners on navigation sub JFrames====
     injf.injp.close.addActionListener(this);
     ojf.ojp.close.addActionListener(this);
+    ajf.ajp.close.addActionListener(this);
         
     //====Options for the Navigational Buttons====
     newGame = new JButton("New Game");  
@@ -71,7 +72,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
             }
         if(obj == about)
             {
-            //ajf.setVisible(true);
+            ajf.setVisible(true);
             }
         if(obj == injf.injp.close)
         {
@@ -80,6 +81,9 @@ public class navigationJPanel extends JPanel implements ActionListener {
         }
         if(obj == ojf.ojp.close) {
             ojf.setVisible(false);
+        }
+        if(obj == ajf.ajp.close)    {
+            ajf.setVisible(false);
         }
     }
     

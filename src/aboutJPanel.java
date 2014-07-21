@@ -1,5 +1,6 @@
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,6 +12,12 @@ import javax.swing.JFrame;
  *
  * @author Cameron
  */
-public class aboutJPanel extends JFrame {
+public class aboutJPanel extends JPanel {
+    JButton close;
+    
+    public aboutJPanel()    {
+        close = new JButton("Close");
+        add(close);
+    }
     
 }
