@@ -28,7 +28,7 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
     
     public optionsJPanel()  {
         //DIFFICULTY SLIDER
-        difficulty = new JSlider(JSlider.HORIZONTAL,1,5,1);
+        difficulty = new JSlider(JSlider.HORIZONTAL,1,3,1);
         difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty"));
         difficulty.setMajorTickSpacing(1);
         difficulty.setPaintTicks(true);
@@ -48,7 +48,21 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
 
     public void stateChanged(ChangeEvent e) {
         JSlider obj = (JSlider)e.getSource();
+        //number between 1-3 that dictates the dificulty level, 1:Easy-2:Regular-3:Expert
         difficultyLevel = obj.getValue();
+        //displays the difficulty level in the title of the slider
+        switch(difficultyLevel){
+            case 1:
+                difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty - Beginner"));
+                break;
+            case 2:
+                difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty - Regular"));
+                break;
+            case 3:
+                difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty - Expert"));
+                break;
+    }
+        
     }
     
 }
