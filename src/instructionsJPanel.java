@@ -1,6 +1,8 @@
 
-import static com.sun.javafx.fxml.expression.Expression.add;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /*
@@ -13,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author Cameron
  */
-public class instructionsJPanel {
+public class instructionsJPanel extends JPanel implements ActionListener {
     JButton close;
     JTextField instructions;
     
@@ -21,9 +23,17 @@ public class instructionsJPanel {
     {
         close = new JButton("Close");
         add(close,"South");
+        close.addActionListener(this);
         
         instructions = new JTextField("The instructions will go here.");
         add(instructions, "North");
+    }
+
+
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        
+        
     }
     
 }

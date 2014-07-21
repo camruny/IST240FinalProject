@@ -28,6 +28,6 @@ public class introJPanel extends JPanel {
                 
                 add(nav, "South");
                 add(splashscreen, "North");
-                                       
+                                               
     }
 }

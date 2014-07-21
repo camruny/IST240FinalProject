@@ -11,7 +11,7 @@
 import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class WelcomeJFrame extends javax.swing.JFrame 
+public class WelcomeJFrame extends javax.swing.JFrame
 {
 	introJPanel ijp;
 	public WelcomeJFrame ()
@@ -21,10 +21,13 @@ public class WelcomeJFrame extends javax.swing.JFrame
 // Create components: JPanel, JButton
     	ijp = new introJPanel();
 		getContentPane().setLayout(new BorderLayout());
-		getContentPane().add(ijp,"Center");
+                //Adds the welcome screen
+                getContentPane().add(ijp,"Center");
+                ijp.setVisible(true);
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);
-                setVisible(true);
+                setVisible(true); 
 	}
 
 }

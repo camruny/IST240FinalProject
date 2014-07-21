@@ -11,18 +11,19 @@
 import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class instructionsJFrame extends javax.swing.JFrame
+public class optionsJFrame extends javax.swing.JFrame
 {
-	instructionsJPanel injp;
-	public instructionsJFrame ()
+	optionsJPanel ojp;
+	public optionsJFrame ()
 	{
-		super ("Instructions");
+		super ("Options");
 //------------------------------------------------------
 // Create components: JPanel, JButton
-    	injp = new instructionsJPanel();
+    	ojp = new optionsJPanel();
 		getContentPane().setLayout(new BorderLayout());
-                getContentPane().add(injp,"Center");
-                injp.setVisible(true);
+                //Adds the welcome screen
+                getContentPane().add(ojp,"Center");
+                ojp.setVisible(true);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);

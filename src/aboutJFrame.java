@@ -9,20 +9,22 @@
  * @author Cameron
  */
 import java.awt.*;
+import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class instructionsJFrame extends javax.swing.JFrame
+public class aboutJFrame extends JFrame
 {
-	instructionsJPanel injp;
-	public instructionsJFrame ()
+	aboutJPanel ajp;
+	public aboutJFrame ()
 	{
-		super ("Instructions");
+		super ("About");
 //------------------------------------------------------
 // Create components: JPanel, JButton
-    	injp = new instructionsJPanel();
+    	ajp = new aboutJPanel();
 		getContentPane().setLayout(new BorderLayout());
-                getContentPane().add(injp,"Center");
-                injp.setVisible(true);
+                //Adds the welcome screen
+                getContentPane().add(ajp,"Center");
+                ajp.setVisible(true);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);
