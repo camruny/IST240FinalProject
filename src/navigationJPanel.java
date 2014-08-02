@@ -1,4 +1,3 @@
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -63,7 +62,30 @@ public class navigationJPanel extends JPanel implements ActionListener {
         //====Opens the JFrames when the navigation buttons are clicked====
         if(obj == instructions)     {injf.setVisible(true);}
         if(obj == options)          {ojf.setVisible(true);}
-        if(obj == newGame)          {ngjf.setVisible(true);}
+        if(obj == newGame)          
+        {
+             // Create a frame
+		//newGameJFrame frame = new newGameJFrame();
+
+		// Create an instance of the applet
+		Asteroids applet = new Asteroids();
+
+		// Add the applet instance to the frame
+		ngjf.getContentPane().add(applet,"Center");
+
+		// Invoke init() and start()
+		applet.init();
+		applet.start();
+
+		// Display the frame
+		//ngjf.setSize(700,300);
+
+		//frame.pack();
+		ngjf.setVisible(true);
+		ngjf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                 /**/
+            //ngjf.setVisible(true);
+        }
         if(obj == about)            {ajf.setVisible(true);}
         
         //====Closes the JFrames when the user clicks "Close"====
