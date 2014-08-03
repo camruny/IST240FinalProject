@@ -2,6 +2,7 @@
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,5 +29,5 @@ public class newGameJFrame extends JFrame {
         setVisible(false); 
         
     }
-    
+
 }
