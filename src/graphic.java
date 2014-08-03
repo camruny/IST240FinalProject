@@ -6,15 +6,8 @@
 
 /**
  *
- * @author Cameron
+ * @author rspatz
  */
-public class app {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        WelcomeJFrame jf = new WelcomeJFrame();
-    }
+public class graphic {
     
 }

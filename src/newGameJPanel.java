@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -45,7 +46,7 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
             close = new JButton("Close");
             tim = new Timer(delay, this);
             timeMessage = new JTextField();
-            timeMessage.setBounds(25, 25, 200, 25);
+            timeMessage.setBounds(25, 5, 200, 25);
             add(timeMessage);
             tim.start();
             
@@ -54,6 +55,8 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
             requestFocusInWindow();
             keyPressed = new JTextField("Key Pressed");
             add(keyPressed);
+            
+           
     }
     
 
@@ -64,11 +67,11 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
        	Object obj = event.getSource();
  
         if (obj == tim)
-		{
-                    timeMessage.setBounds(25, 25, 200, 25);
-                    i++;  
-                      timeMessage.setText("Current Time: "+i + " seconds");
-		}
+        {
+            timeMessage.setBounds(25, 5, 200, 25);
+            i++;  
+              timeMessage.setText("Current Time: "+i + " seconds");
+        }
 }
 
     
