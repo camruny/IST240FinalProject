@@ -19,12 +19,14 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton options;
     JButton instructions;
     JButton about;
+    JButton highScores;
    
     //====adds the JFrames to the window====
     instructionsJFrame injf = new instructionsJFrame();
     aboutJFrame ajf = new aboutJFrame();
     optionsJFrame ojf = new optionsJFrame();
     newGameJFrame ngjf = new newGameJFrame();
+    highScoreJFrame hsjf = new highScoreJFrame();
     
     public navigationJPanel() {
         
@@ -34,6 +36,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     ojf.ojp.close.addActionListener(this);
     ajf.ajp.close.addActionListener(this);
     ngjf.ngjp.close.addActionListener(this);
+    hsjf.hsjp.close.addActionListener(this);
         
     //====Options for the Navigational Buttons====
     newGame = new JButton("New Game");  
@@ -52,7 +55,9 @@ public class navigationJPanel extends JPanel implements ActionListener {
     add(about);
     about.addActionListener(this);
     
-    
+    highScores = new JButton("High Scores");
+    add(highScores);
+    highScores.addActionListener(this);
     
 }
 
@@ -62,6 +67,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
         //====Opens the JFrames when the navigation buttons are clicked====
         if(obj == instructions)     {injf.setVisible(true);}
         if(obj == options)          {ojf.setVisible(true);}
+        if(obj == highScores)       {hsjf.setVisible(true);}
         if(obj == newGame)          
         {
              // Create a frame
@@ -93,6 +99,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
         if(obj == ojf.ojp.close)    {ojf.setVisible(false);}
         if(obj == ajf.ajp.close)    {ajf.setVisible(false);}
         if(obj == ngjf.ngjp.close)  {ngjf.setVisible(false);}
+        if(obj == hsjf.hsjp.close)  {hsjf.setVisible(false);}
     }
     
 }

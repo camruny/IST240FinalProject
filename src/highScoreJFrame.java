@@ -15,25 +15,16 @@ import javax.swing.*;
  *
  * @author Cameron
  */
-public class newGameJFrame extends JFrame {
-    newGameJPanel ngjp;
-    newGameJFrame() {
-        super ("New Game");
+public class highScoreJFrame extends JFrame {
+    highScoreJPanel hsjp;
+    highScoreJFrame() {
+        super ("High Scores");
 //------------------------------------------------------
 // Create components: JPanel, JButton
-    	ngjp = new newGameJPanel();
+    	hsjp = new highScoreJPanel();
 	getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(ngjp,"North");        
-        ngjp.setVisible(true);
-        
-        Asteroids applet = new Asteroids();
-        
-        getContentPane().add(applet,"Center");
-       
-        applet.init();
-        applet.start();
-
-
+        getContentPane().add(hsjp);        
+        hsjp.setVisible(true);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (680, 560);

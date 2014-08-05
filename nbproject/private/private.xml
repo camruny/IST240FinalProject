@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/graphic.java</file>
             <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/newGameJFrame.java</file>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/app.java</file>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/base.java</file>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/Asteroids.java</file>
+            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/navigationJPanel.java</file>
             <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/newGameJPanel.java</file>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/missile.java</file>
-            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/JFrame.java</file>
+            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/src/highScoreJPanel.java</file>
+            <file>file:/Users/Cameron/Documents/College/IST%20240/Final%20Project/IST240FinalProject/scores.xml</file>
         </group>
     </open-files>
 </project-private>

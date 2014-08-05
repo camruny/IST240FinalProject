@@ -56,8 +56,7 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
             keyPressed = new JTextField("Key Pressed");
             add(keyPressed);
             
-           
-    }
+        }
     
 
 
