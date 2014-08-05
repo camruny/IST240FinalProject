@@ -15,21 +15,18 @@ import java.util.*;
 public class Asteroids extends Applet implements Runnable, KeyListener{
 	
 	Thread gameloop;
-	
 	BufferedImage backbuffer;
-	
 	Graphics2D g2d;
-	
 	boolean showBounds= false;
-	
-	
+	optionsJPanel options;
+	 int delay;
 	int ASTEROIDS=20;
 	asteroid[] ast= new asteroid[ASTEROIDS];
 	
 	
-	int BULLETS=10;
-	missile[] bullet= new missile[BULLETS];
-	int currentBullet=0;
+	int MISSILES=10;
+	missile[] missiles= new missile[MISSILES];
+	int currentMissiles=0;
 	
 	
 	ship ship= new ship();
@@ -47,13 +44,24 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		backbuffer= new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
 		g2d= backbuffer.createGraphics();
 		
-		
+		options = new optionsJPanel();
+                
+                switch (options.speedLevel){
+            case 1:
+                delay = 1;
+            case 2:
+                delay = 1;
+            case 3:
+                delay = 1;
+            default:
+                    delay = 1;
+                                    }
 		ship.setX(320);
 		ship.setY(240);
 		
 		
-		for(int n=0;n<BULLETS;n++){
-			bullet[n]= new missile();
+		for(int n=0;n<MISSILES;n++){
+			missiles[n]= new missile();
 		}
 		
 		
@@ -64,8 +72,8 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 			ast[n].setY((double)rand.nextInt(440)+20);
 			ast[n].setMoveAngle(rand.nextInt(360));
 			double ang= ast[n].getMoveAngle()-90;
-			ast[n].setVelX(calcAngleMoveX(ang));
-			ast[n].setVelY(calcAngleMoveY(ang));
+			ast[n].setVelX(calcAngleMoveX(ang) * delay);    //Not working but if I can get delay working we can adjust the speed of the game
+			ast[n].setVelY(calcAngleMoveY(ang) * delay);
 		}
 		
 		
@@ -84,14 +92,11 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		
 		
 		g2d.setColor(Color.WHITE);
-		g2d.drawString("Ship: "+Math.round(ship.getX())+","+Math.round(ship.getY()),5,10);
-		g2d.drawString("Move angle: "+Math.round(ship.getMoveAngle())+90,5,25);
-		g2d.drawString("Face angle: "+Math.round(ship.getFaceAngle()),5,40);
                 g2d.drawString("Score : "+(20-score),5,55);
 	
 		
 		drawShip();
-		drawBullets();
+		drawMissiless();
 		drawAsteroids();
 	
 		
@@ -103,21 +108,21 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 			g2d.setTransform(identity);
 			g2d.translate(ship.getX(),ship.getY());
 			g2d.rotate(Math.toRadians(ship.getFaceAngle()));
-			g2d.setColor(Color.ORANGE);
+			g2d.setColor(Color.CYAN);
 			g2d.fill(ship.getShape());
 		}
 		
 		
-		public void drawBullets(){
+		public void drawMissiless(){
 			
-			for(int n=0;n<BULLETS;n++){
+			for(int n=0;n<MISSILES;n++){
 				
-				if(bullet[n].isAlive()){
+				if(missiles[n].isAlive()){
 					
 					g2d.setTransform(identity);
-					g2d.translate(bullet[n].getX(), bullet[n].getY());
-					g2d.setColor(Color.MAGENTA);
-					g2d.draw(bullet[n].getShape());
+					g2d.translate(missiles[n].getX(), missiles[n].getY());
+					g2d.setColor(Color.RED);
+					g2d.draw(missiles[n].getShape());
 				}
 			}
 		}
@@ -182,7 +187,7 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		
 		private void gameUpdate(){
 			updateShip();
-			updateBullets();
+			updateMissiless();
 			updateAsteroids();
 			checkCollisions();
 		}
@@ -210,28 +215,28 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		}
 		
 		
-		public void updateBullets(){
+		public void updateMissiless(){
                         
 			
-			for(int n=0;n<BULLETS;n++){
+			for(int n=0;n<MISSILES;n++){
 				
 				
-				if(bullet[n].isAlive()){
+				if(missiles[n].isAlive()){
 					
 					
-					bullet[n].incX(bullet[n].getVelX());
+					missiles[n].incX(missiles[n].getVelX());
 					
 					
-					if(bullet[n].getX() <0 || bullet[n].getX()>getSize().width){
-						bullet[n].setAlive(false);
+					if(missiles[n].getX() <0 || missiles[n].getX()>getSize().width){
+						missiles[n].setAlive(false);
 					}
 					
 					
-					bullet[n].incY(bullet[n].getVelY());
+					missiles[n].incY(missiles[n].getVelY());
 					
 					
-					if(bullet[n].getY() <0 || bullet[n].getY()>getSize().height){
-						bullet[n].setAlive(false);
+					if(missiles[n].getY() <0 || missiles[n].getY()>getSize().height){
+						missiles[n].setAlive(false);
 					}
 					
 				}
@@ -286,14 +291,14 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 				if(ast[m].isAlive()){
 					
 					
-					for(int n=0;n<BULLETS;n++){
+					for(int n=0;n<MISSILES;n++){
 						
 						
-						if(bullet[n].isAlive()){
+						if(missiles[n].isAlive()){
 							
 							
-							if(ast[m].getBounds().contains(bullet[n].getX(),bullet[n].getY())){
-								bullet[n].setAlive(false);
+							if(ast[m].getBounds().contains(missiles[n].getX()+1,missiles[n].getY()+1)){
+								missiles[n].setAlive(false);
 								ast[m].setAlive(false);
 								continue;
 							}
@@ -302,7 +307,7 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 					
 					
 					if(ast[m].getBounds().intersects(ship.getBounds())){
-						ast[m].setAlive(false);
+						ast[m].setAlive(true);
 						ship.setX(320);
 						ship.setY(240);
 						ship.setFaceAngle(0);
@@ -334,29 +339,33 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 				break;
 			case KeyEvent.VK_UP:
 				ship.setMoveAngle(ship.getFaceAngle()-90);
-				ship.incVelX(calcAngleMoveX(ship.getMoveAngle())*0.1);
-				ship.incVelY(calcAngleMoveY(ship.getMoveAngle())*0.1);
+				ship.incVelX(calcAngleMoveX(ship.getMoveAngle())*0.10);
+				ship.incVelY(calcAngleMoveY(ship.getMoveAngle())*0.10);
 				break;
-			
+                        case KeyEvent.VK_DOWN:
+                            ship.setMoveAngle(ship.getFaceAngle()-270);
+				ship.incVelX(calcAngleMoveX(ship.getMoveAngle())*0.10);
+				ship.incVelY(calcAngleMoveY(ship.getMoveAngle())*0.10);
+				break;
 			case KeyEvent.VK_CONTROL:
 			case KeyEvent.VK_ENTER:
 			case KeyEvent.VK_SPACE:
 				
-				currentBullet++;
-				if(currentBullet > BULLETS -1) currentBullet=0;
-				bullet[currentBullet].setAlive(true);
+				currentMissiles++;
+				if(currentMissiles > MISSILES -1) currentMissiles=0;
+				missiles[currentMissiles].setAlive(true);
 				
 				
-				bullet[currentBullet].setX(ship.getX());
-				bullet[currentBullet].setY(ship.getY());
-				bullet[currentBullet].setMoveAngle(ship.getFaceAngle()-90);
+				missiles[currentMissiles].setX(ship.getX());
+				missiles[currentMissiles].setY(ship.getY());
+				missiles[currentMissiles].setMoveAngle(ship.getFaceAngle()-90);
 				
 				
-				double angle=bullet[currentBullet].getMoveAngle();
+				double angle=missiles[currentMissiles].getMoveAngle();
 				double svx=ship.getVelX();
 				double svy=ship.getVelY();
-				bullet[currentBullet].setVelX(svx+calcAngleMoveX(angle)*2);
-				bullet[currentBullet].setVelY(svy+calcAngleMoveY(angle)*2);
+				missiles[currentMissiles].setVelX(svx+calcAngleMoveX(angle)*2);
+				missiles[currentMissiles].setVelY(svy+calcAngleMoveY(angle)*2);
 			}
 		}
 		
