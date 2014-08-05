@@ -25,13 +25,14 @@ public class newGameJFrame extends JFrame {
         getContentPane().add(ngjp,"North");        
         ngjp.setVisible(true);
         
-       /* Asteroids applet = new Asteroids();
+        Asteroids applet = new Asteroids();
         
         getContentPane().add(applet,"Center");
        
         applet.init();
         applet.start();
-*/
+
+
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (680, 560);

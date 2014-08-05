@@ -321,6 +321,8 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		public void keyTyped(KeyEvent k) {}
 		public void keyPressed(KeyEvent k){
 			int keyCode=k.getKeyCode();
+                        if(k.getKeyCode()== KeyEvent.VK_LEFT){ship.incFaceAngle(-5);
+				if(ship.getFaceAngle()<0) ship.setFaceAngle(360-5);}
 			switch(keyCode){
 			case KeyEvent.VK_LEFT:
 				
