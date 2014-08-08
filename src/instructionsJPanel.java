@@ -1,9 +1,13 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +21,9 @@ import javax.swing.JTextField;
  */
 public class instructionsJPanel extends JPanel implements ActionListener {
     JButton close;
-    JTextField instructions;
+    JTextArea instructions;
+    String instructionText = "ERROR";   //Shows an error if the program does not read from the XML file
+    XMLDecoder de;
     
     instructionsJPanel()
     {
@@ -25,9 +31,35 @@ public class instructionsJPanel extends JPanel implements ActionListener {
         add(close,"South");
         close.addActionListener(this);
         
-        instructions = new JTextField("The instructions will go here.");
-        add(instructions, "North");
+        getInstructions();
+        
+        instructions = new JTextArea(10,40);
+        instructions.setText(instructionText);
+        instructions.setLineWrap(true);
+        instructions.setWrapStyleWord(true);
+        instructions.setEditable(false);
+        add(instructions, "Center");
+        
+        
+        
     }
+    
+    //gets the instructions from the instruction.xml document and sets it as a string
+    public void getInstructions()   {
+    try {
+              de = new XMLDecoder(new BufferedInputStream(new FileInputStream("instructions.xml")));
+             }
+          catch(Exception xx) {xx.printStackTrace();}
+          try {
+			 instructionText = (String)de.readObject();
+			 
+            }
+          catch(Exception xx) {xx.printStackTrace();}
+          try {
+             de.close();
+            }
+          catch(Exception xx) {xx.printStackTrace();}
+        }
 
 
     public void actionPerformed(ActionEvent e) {
