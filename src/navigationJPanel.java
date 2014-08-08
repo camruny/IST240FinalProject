@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -29,6 +30,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     highScoreJFrame hsjf = new highScoreJFrame();
     
     public navigationJPanel() {
+        setBackground(Color.black);
         
     
     //====ActionListeners on navigation sub JFrames====

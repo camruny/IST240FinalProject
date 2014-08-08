@@ -18,13 +18,13 @@ public class splashscreenJPanel extends JPanel {
     private JLabel label1;
     
     public splashscreenJPanel() {
-        setBackground(Color.blue);
+        setBackground(Color.black);
         
       
    
         setLayout(new FlowLayout());
         
-        image1 = new ImageIcon(getClass().getResource("Asteroid-002.jpg"));
+        image1 = new ImageIcon(getClass().getResource("nav_logo.jpg"));
         label1 = new JLabel(image1);
         add(label1);
     }

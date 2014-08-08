@@ -14,7 +14,7 @@ public class introJPanel extends JPanel {
 
     public introJPanel() {
         super();
-setBackground(Color.blue);
+setBackground(Color.black);
 
 setLayout(new BorderLayout());
 
