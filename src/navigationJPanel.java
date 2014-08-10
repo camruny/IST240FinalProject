@@ -21,13 +21,15 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton instructions;
     JButton about;
     JButton highScores;
-   
+
     //====adds the JFrames to the window====
     instructionsJFrame injf = new instructionsJFrame();
     aboutJFrame ajf = new aboutJFrame();
     optionsJFrame ojf = new optionsJFrame();
-    newGameJFrame ngjf = new newGameJFrame();
+    OLDnewGameJFrame ngjf = new OLDnewGameJFrame();
     highScoreJFrame hsjf = new highScoreJFrame();
+    newGameJFrame ngf = new newGameJFrame();
+
     
     public navigationJPanel() {
         setBackground(Color.black);
@@ -45,6 +47,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
     add(newGame);
     newGame.addActionListener(this);
     
+    
     options = new JButton("Options");
     add(options);
     options.addActionListener(this);
@@ -60,7 +63,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     highScores = new JButton("High Scores");
     add(highScores);
     highScores.addActionListener(this);
-    
 }
 
     public void actionPerformed(ActionEvent e) {
@@ -70,29 +72,27 @@ public class navigationJPanel extends JPanel implements ActionListener {
         if(obj == instructions)     {injf.setVisible(true);}
         if(obj == options)          {ojf.setVisible(true);}
         if(obj == highScores)       {hsjf.setVisible(true);}
+
         if(obj == newGame)          
         {
              // Create a frame
-		//newGameJFrame frame = new newGameJFrame();
+		//OLDnewGameJFrame frame = new OLDnewGameJFrame();
 
 		// Create an instance of the applet
-		Asteroids applet = new Asteroids();
+		OLDAsteroids applet = new OLDAsteroids();
 
 		// Add the applet instance to the frame
-		ngjf.getContentPane().add(applet,"Center");
+		//ngjf.getContentPane().add(applet,"Center");
 
 		// Invoke init() and start()
-		applet.init();
-		applet.start();
+		//applet.init();
+		//applet.start();
+                //applet.setSize(680,560);
 
-		// Display the frame
-		//ngjf.setSize(700,300);
-
-		//frame.pack();
-		ngjf.setVisible(true);
-		ngjf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                 /**/
-            //ngjf.setVisible(true);
+		//ngjf.setVisible(true);
+		//ngjf.setDefaultCloseOperation(OLDJFrame.EXIT_ON_CLOSE);
+                ngf.setVisible(true);
+         
         }
         if(obj == about)            {ajf.setVisible(true);}
         

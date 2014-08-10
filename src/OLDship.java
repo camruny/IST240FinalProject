@@ -1,7 +1,7 @@
     import java.awt.Polygon;
 import java.awt.Rectangle;
 
-public class ship extends base {
+public class OLDship extends OLDbase {
     //define the ship polygon
     private int[] shipx = { -6, -3, 0, 3, 6, 0 };
     private int[] shipy = { 6, 7, 7, 7, 6, -7 };
@@ -13,7 +13,7 @@ public class ship extends base {
         return r;
     }
 
-    ship() {
+    OLDship() {
         setShape(new Polygon(shipx, shipy, shipx.length));
         setAlive(true);
     }

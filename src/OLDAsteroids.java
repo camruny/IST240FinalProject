@@ -12,7 +12,7 @@ import java.awt.image.*;
 import java.util.*;
 
 //Primary class for the game
-public class Asteroids extends Applet implements Runnable, KeyListener{
+public class OLDAsteroids extends Applet implements Runnable, KeyListener{
 	
 	Thread gameloop;
 	BufferedImage backbuffer;
@@ -21,15 +21,15 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 	optionsJPanel options;
 	 int delay;
 	int ASTEROIDS=20;
-	asteroid[] ast= new asteroid[ASTEROIDS];
+	OLDasteroid[] ast= new OLDasteroid[ASTEROIDS];
 	
 	
 	int MISSILES=10;
-	missile[] missiles= new missile[MISSILES];
+	OLDmissile[] missiles= new OLDmissile[MISSILES];
 	int currentMissiles=0;
 	
 	
-	ship ship= new ship();
+	OLDship ship= new OLDship();
 	
 	
 	AffineTransform identity= new AffineTransform();
@@ -61,12 +61,12 @@ public class Asteroids extends Applet implements Runnable, KeyListener{
 		
 		
 		for(int n=0;n<MISSILES;n++){
-			missiles[n]= new missile();
+			missiles[n]= new OLDmissile();
 		}
 		
 		
 		for(int n=0;n<ASTEROIDS;n++){
-			ast[n]=new asteroid();
+			ast[n]=new OLDasteroid();
 			ast[n].setRotationVelocity(rand.nextInt(3)+1);
 			ast[n].setX((double)rand.nextInt(600)+20);
 			ast[n].setY((double)rand.nextInt(440)+20);

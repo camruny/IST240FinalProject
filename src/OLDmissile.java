@@ -5,7 +5,7 @@ import java.awt.Rectangle;
  * Bullet class - polygonal shape of a bullet
 
  **********************************************************/
-public class missile extends base {
+public class OLDmissile extends OLDbase {
 
     //bounding rectangle
     public Rectangle getBounds() {
@@ -14,7 +14,7 @@ public class missile extends base {
         return r;
     }
 
-    missile() {
+    OLDmissile() {
         //create the bullet shape
         setShape(new Rectangle(0, 0, 1, 1));
         setAlive(false);

@@ -2,7 +2,7 @@ import java.awt.Shape;
 /*********************************************************
  * Base vector shape class for for polygonal shapes
  **********************************************************/
-public class base {
+public class OLDbase {
     //variables
     private Shape shape;
     private boolean alive;
@@ -37,7 +37,7 @@ public class base {
     public void incMoveAngle(double i) { this.moveAngle += i; }
 
     //default constructor
-    base() {
+    OLDbase() {
         setShape(null);
         setAlive(false);
         setX(0.0);
