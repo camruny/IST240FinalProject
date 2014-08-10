@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<java version="1.6.0_65" class="java.beans.XMLDecoder"> 
-        <string>Cameron Runyeon</string>
-        <int>50</int>
-</java>
+<scores>
+	<score>
+		<name>Pete</name>
+		<value>190239</value>
+	</score>
+	<score>
+		<name>Shane</name>
+		<value>98374</value>
+	</score>
+	<score>
+		<name>John</name>
+		<value>91082</value>
+	</score>
+</scores>
