@@ -1,13 +1,20 @@
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,7 +32,7 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     Timer countDown = new Timer(1000, this);
     
     int shipX=320,shipY=220, velx=0, vely=0;
-    int shipSpeed = 8;  //sets the speed that the ship will move
+    int shipSpeed = 1;  //sets the speed that the ship will move
     int missleSpeed = 3;  //sets the speed that the missle will travel
     
     //sets up the blocks to be shot at
@@ -34,12 +41,11 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     JButton c1,c2,c3,c4;
     JButton d1,d2,d3,d4;
     JButton e1,e2,e3,e4;
-    int blockSize = 35; //sets the size of the blocks
+    int blockSize = 30; //sets the size of the blocks
     
     //Components of the countdown timer
     JButton timeDisplay;
-    int gameTime = 60;  //sets the time for the game
-    
+    int gameTime = 5;
     
     
     newGameJPanel() {
@@ -53,28 +59,34 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         
         timeDisplay = new JButton("Time Remaining: " + gameTime);
         add(timeDisplay);
-        timeDisplay.setBounds(new Rectangle(10,10,300,30));
+        timeDisplay.setBounds(new Rectangle(135,10,300,30));
         
-        a1 = new JButton();
-        a2 = new JButton();
-        a3 = new JButton();
-        a4 = new JButton();
-        b1 = new JButton();
-        b2 = new JButton();
-        b3 = new JButton();
-        b4 = new JButton();
-        c1 = new JButton();
-        c2 = new JButton();
-        c3 = new JButton();
-        c4 = new JButton();
-        d1 = new JButton();
-        d2 = new JButton();
-        d3 = new JButton();
-        d4 = new JButton();
-        e1 = new JButton();
-        e2 = new JButton();
-        e3 = new JButton();
-        e4 = new JButton();
+        //Resizes the football image based on how big the blocks are
+        Image football = new ImageIcon("football.png").getImage().getScaledInstance(blockSize*2, blockSize, java.awt.Image.SCALE_SMOOTH);
+        //Converts the image into an icon so that it can be used with the JButtons
+        ImageIcon footballIcon = new ImageIcon(football);
+
+        a1 = new JButton(footballIcon);
+        a2 = new JButton(footballIcon);
+        a3 = new JButton(footballIcon);
+        a4 = new JButton(footballIcon);
+        b1 = new JButton(footballIcon);
+        b2 = new JButton(footballIcon);
+        b3 = new JButton(footballIcon);
+        b4 = new JButton(footballIcon);
+        c1 = new JButton(footballIcon);
+        c2 = new JButton(footballIcon);
+        c3 = new JButton(footballIcon);
+        c4 = new JButton(footballIcon);
+        d1 = new JButton(footballIcon);
+        d2 = new JButton(footballIcon);
+        d3 = new JButton(footballIcon);
+        d4 = new JButton(footballIcon);
+        e1 = new JButton(footballIcon);
+        e2 = new JButton(footballIcon);
+        e3 = new JButton(footballIcon);
+        e4 = new JButton(footballIcon);
+        
         
         
         //x,y,lengh,height
@@ -125,6 +137,11 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         if(obj == countDown)    {
             gameTime = gameTime - 1;    //subtracts one every second to countdown the game
             timeDisplay.setText("Time Remaining: " + gameTime);
+            if(gameTime == 0)    {
+                time.stop();
+                countDown.stop();
+                timeDisplay.setText("GAME OVER!");
+            }
         }
     }
     
