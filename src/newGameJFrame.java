@@ -16,6 +16,7 @@ public class newGameJFrame extends JFrame
 // add Jpanel to JFrame according to layout    	
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(ngjp,"Center");
+                getContentPane().add(new ScoreBoard(), BorderLayout.EAST);
 //------------------------------------------------------
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);
