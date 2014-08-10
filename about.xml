@@ -6,6 +6,6 @@ and open the template in the editor.
 -->
 <java version="1.6.0_65" class="java.beans.XMLDecoder"> 
         <string>
-            Welcome to PSU Space Invaders.  As soon as the game begins, your time starts.  Your mission is to shoot down all of the footballs before the time runs out.  The more footballs you hit, the better your score will be!  Good luck!
+            ABOUT TEXT GOES HERE
         </string>
 </java>

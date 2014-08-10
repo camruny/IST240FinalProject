@@ -35,13 +35,15 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     int shipSpeed = 1;  //sets the speed that the ship will move
     int missleSpeed = 3;  //sets the speed that the missle will travel
     
+    
     //sets up the blocks to be shot at
     JButton a1,a2,a3,a4;
     JButton b1,b2,b3,b4;
     JButton c1,c2,c3,c4;
     JButton d1,d2,d3,d4;
     JButton e1,e2,e3,e4;
-    int blockSize = 30; //sets the size of the blocks
+    //sets the size of the blocks
+    int blockSize = 30;
     
     //Components of the countdown timer
     JButton timeDisplay;
