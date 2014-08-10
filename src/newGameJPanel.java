@@ -22,9 +22,10 @@ import javax.swing.Timer;
 public class newGameJPanel extends JPanel implements ActionListener, KeyListener {
     
     Timer time = new Timer(5, this);
+    Timer countDown = new Timer(1000, this);
     
     int shipX=320,shipY=220, velx=0, vely=0;
-    int shipSpeed = 1;  //sets the speed that the ship will move
+    int shipSpeed = 8;  //sets the speed that the ship will move
     int missleSpeed = 3;  //sets the speed that the missle will travel
     
     //sets up the blocks to be shot at
@@ -33,17 +34,26 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     JButton c1,c2,c3,c4;
     JButton d1,d2,d3,d4;
     JButton e1,e2,e3,e4;
-    int blockSize = 15; //sets the size of the blocks
+    int blockSize = 35; //sets the size of the blocks
+    
+    //Components of the countdown timer
+    JButton timeDisplay;
+    int gameTime = 60;  //sets the time for the game
     
     
     
     newGameJPanel() {
+        countDown.start();
         time.start();
         addKeyListener(this);
         setFocusable(true);
         //prevents erratic behavior from various key entrys
         setFocusTraversalKeysEnabled(false);
         setLayout(null);
+        
+        timeDisplay = new JButton("Time Remaining: " + gameTime);
+        add(timeDisplay);
+        timeDisplay.setBounds(new Rectangle(10,10,300,30));
         
         a1 = new JButton();
         a2 = new JButton();
@@ -72,29 +82,28 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         a2.setBounds(new Rectangle(50,80,blockSize*2,blockSize));
         a3.setBounds(new Rectangle(50,110,blockSize*2,blockSize));
         a4.setBounds(new Rectangle(50,140,blockSize*2,blockSize));
-        b1.setBounds(new Rectangle(100,50,blockSize*2,blockSize));
-        b2.setBounds(new Rectangle(100,80,blockSize*2,blockSize));
-        b3.setBounds(new Rectangle(100,110,blockSize*2,blockSize));
-        b4.setBounds(new Rectangle(100,140,blockSize*2,blockSize));
-        c1.setBounds(new Rectangle(150,50,blockSize*2,blockSize));
-        c2.setBounds(new Rectangle(150,80,blockSize*2,blockSize));
-        c3.setBounds(new Rectangle(150,110,blockSize*2,blockSize));
-        c4.setBounds(new Rectangle(150,140,blockSize*2,blockSize));
-        d1.setBounds(new Rectangle(200,50,blockSize*2,blockSize));
-        d2.setBounds(new Rectangle(200,80,blockSize*2,blockSize));
-        d3.setBounds(new Rectangle(200,110,blockSize*2,blockSize));
-        d4.setBounds(new Rectangle(200,140,blockSize*2,blockSize));
-        e1.setBounds(new Rectangle(250,50,blockSize*2,blockSize));
-        e2.setBounds(new Rectangle(250,80,blockSize*2,blockSize));
-        e3.setBounds(new Rectangle(250,110,blockSize*2,blockSize));
-        e4.setBounds(new Rectangle(250,140,blockSize*2,blockSize));
+        b1.setBounds(new Rectangle(150,50,blockSize*2,blockSize));
+        b2.setBounds(new Rectangle(150,80,blockSize*2,blockSize));
+        b3.setBounds(new Rectangle(150,110,blockSize*2,blockSize));
+        b4.setBounds(new Rectangle(150,140,blockSize*2,blockSize));
+        c1.setBounds(new Rectangle(250,50,blockSize*2,blockSize));
+        c2.setBounds(new Rectangle(250,80,blockSize*2,blockSize));
+        c3.setBounds(new Rectangle(250,110,blockSize*2,blockSize));
+        c4.setBounds(new Rectangle(250,140,blockSize*2,blockSize));
+        d1.setBounds(new Rectangle(350,50,blockSize*2,blockSize));
+        d2.setBounds(new Rectangle(350,80,blockSize*2,blockSize));
+        d3.setBounds(new Rectangle(350,110,blockSize*2,blockSize));
+        d4.setBounds(new Rectangle(350,140,blockSize*2,blockSize));
+        e1.setBounds(new Rectangle(450,50,blockSize*2,blockSize));
+        e2.setBounds(new Rectangle(450,80,blockSize*2,blockSize));
+        e3.setBounds(new Rectangle(450,110,blockSize*2,blockSize));
+        e4.setBounds(new Rectangle(450,140,blockSize*2,blockSize));
         
         add(a1);    add(a2);    add(a3);    add(a4);
         add(b1);    add(b2);    add(b3);    add(b4); 
         add(c1);    add(c2);    add(c3);    add(c4); 
         add(d1);    add(d2);    add(d3);    add(d4); 
         add(e1);    add(e2);    add(e3);    add(e4); 
-        
         
     }
     
@@ -105,9 +114,18 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
 
 
     public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        
+        if(obj == time) {
         repaint();
         shipX += velx;
         shipY += vely;
+        }
+        
+        if(obj == countDown)    {
+            gameTime = gameTime - 1;    //subtracts one every second to countdown the game
+            timeDisplay.setText("Time Remaining: " + gameTime);
+        }
     }
     
     public void up()    {
@@ -145,10 +163,10 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_UP) {
-            up();
+            //up();
         }
         if (code == KeyEvent.VK_DOWN) {
-            down();
+            //down();
         }
         if (code == KeyEvent.VK_LEFT) {
             left();
