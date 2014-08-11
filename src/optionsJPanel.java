@@ -67,7 +67,7 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
         add(close);
         
         //save button
-        save = new JButton("Save Options");
+        save = new JButton("Save Options & Start ");
         save.addActionListener(this);
         add(save);
     }
@@ -79,23 +79,25 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
         if(obj == save) {
     
      	 
-           try {
+            try {
               xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("options.xml")));
              }
-           catch(Exception xx) {xx.printStackTrace();}
+            catch(Exception xx) {xx.printStackTrace();}
 
-           try {
+            try {
 			 xe.writeObject(difficultyLevel);
 			 xe.writeObject(speedLevel);
                          xe.writeObject(blocksizeAdj);
             }
-           catch(Exception xx) {xx.printStackTrace();}
+            catch(Exception xx) {xx.printStackTrace();}
 
-           try {
+            try {
              xe.close();
             }
-           catch(Exception xx) {xx.printStackTrace();}
-          
+            catch(Exception xx) {xx.printStackTrace();}
+           
+            newGameJFrame ngf = new newGameJFrame();
+            ngf.setVisible(true);
      	 }
         }
         
