@@ -6,10 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.swing.Action;
-import javax.swing.Icon;
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -31,9 +30,12 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     Timer time = new Timer(5, this);
     Timer countDown = new Timer(1000, this);
     
+    XMLDecoder de;
+    
     int shipX=320,shipY=220, velx=0, vely=0;
     int shipSpeed = 1;  //sets the speed that the ship will move
     int missleSpeed = 3;  //sets the speed that the missle will travel
+    int difficultyLevel;
     
     
     //sets up the blocks to be shot at
@@ -55,6 +57,11 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         time.start();
         addKeyListener(this);
         setFocusable(true);
+        
+        //method that gets the saved options from the XML file
+        getOptions();
+        setDifficulty();
+        
         //prevents erratic behavior from various key entrys
         setFocusTraversalKeysEnabled(false);
         setLayout(null);
@@ -124,6 +131,40 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     public void paintComponent(Graphics g)  {
         super.paintComponent(g);
         g.fillRect (shipX,shipY,20,20);
+    }
+    
+    //gets the options from the XML file that were saved in the options JPanel
+    public void getOptions()    {
+        try {
+              de = new XMLDecoder(new BufferedInputStream(new FileInputStream("options.xml")));
+             }
+          catch(Exception xx) {xx.printStackTrace();}
+          try {
+			 difficultyLevel = (Integer)de.readObject();
+			 shipSpeed = (Integer)de.readObject();
+                         blockSize = (Integer)de.readObject();
+			 
+            }
+          catch(Exception xx) {xx.printStackTrace();}
+          try {
+             de.close();
+            }
+          catch(Exception xx) {xx.printStackTrace();}
+    }
+    
+    //sets the time of the game based on the difficulty level
+    public void setDifficulty() {
+        switch (difficultyLevel)    {
+            case 1:
+                gameTime = 60;
+                break;
+            case 2:
+                gameTime = 30;
+                break;
+            case 3:
+                gameTime = 10;
+                break;
+                }
     }
 
 

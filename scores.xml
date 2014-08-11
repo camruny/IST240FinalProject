@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scores>
+<java version="1.6.0_65" class="java.beans.XMLDecoder">
 	<score>
 		<name>Ryan</name>
 		<value>190239</value>
@@ -12,4 +12,4 @@
 		<name>John</name>
 		<value>91082</value>
 	</score>
-</scores>
+</java>

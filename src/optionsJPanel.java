@@ -3,6 +3,9 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.XMLEncoder;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,11 +28,13 @@ import javax.swing.event.ChangeListener;
  //Jonathan Cesari - Changed the code a bit to use if statements for our ChangeListeners
  //Added an additional option for a speed slider
 public class optionsJPanel extends JPanel implements ActionListener, ChangeListener {
-    JButton close;
+    JButton close, save;
     
     JSlider difficulty, speed, blocksize;
     
-    int difficultyLevel = 2, speedLevel = 4, blocksizeLevel = 24;
+    int difficultyLevel = 2, speedLevel = 4, blocksizeLevel = 24, blocksizeAdj;
+    
+    XMLEncoder xe;
 
     
     public optionsJPanel()  {
@@ -57,16 +62,44 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
         blocksize.addChangeListener(this);
         add(blocksize);
         
-
+        //close button    
         close = new JButton("Close");
         add(close);
         
+        //save button
+        save = new JButton("Save Options");
+        save.addActionListener(this);
+        add(save);
     }
 
 
     public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
         
-    }
+        if(obj == save) {
+    
+     	 
+           try {
+              xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("options.xml")));
+             }
+           catch(Exception xx) {xx.printStackTrace();}
+
+           try {
+			 xe.writeObject(difficultyLevel);
+			 xe.writeObject(speedLevel);
+                         xe.writeObject(blocksizeAdj);
+            }
+           catch(Exception xx) {xx.printStackTrace();}
+
+           try {
+             xe.close();
+            }
+           catch(Exception xx) {xx.printStackTrace();}
+          
+     	 }
+        }
+        
+   
 
 
     public void stateChanged(ChangeEvent e) {
@@ -127,7 +160,10 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
     	  //7 TO 35, 6 is added to the value in the other panel to start the value at 7
     	  //!!!! PLEASE MAKE SURE 6 IS ADDED TO THE VALUE WITH WHATEVER METHOD WE USE OR IT WILL BE WRONG!!
     	  blocksizeLevel = blocksize.getValue();
-   switch(blocksizeLevel){
+          blocksizeAdj = (blocksize.getValue() + 6);
+          blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: " + String.valueOf(blocksizeAdj)));
+          
+   /*switch(blocksizeLevel){
            case 1:
                blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 7"));
                break;
@@ -214,8 +250,8 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
                break;
            case 29:
         	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 35"));
-               break;
-   }
+               break; 
+   }    */
     }
     }
 }
