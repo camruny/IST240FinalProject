@@ -28,6 +28,7 @@ public class bullet extends JPanel implements ActionListener {
     Timer time = new Timer(5, this);
 
     bullet(int x, int y, int speed) {
+        System.out.println("tt");
         time.start();
         shipX = x;
         shipY = y;
@@ -41,14 +42,16 @@ public class bullet extends JPanel implements ActionListener {
     
     public void paintComponent(Graphics g)  {
         super.paintComponent(g);
+        System.out.println("Test");
         g.fillRect (shipX,shipY,40,40);
     }
 
 
     public void actionPerformed(ActionEvent e) {
-        repaint();
+       
         missleX += velx;
         missleY += vely;
         up();
+         repaint();
     }
 }

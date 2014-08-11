@@ -1,7 +1,7 @@
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.*;
+import java.awt.geom.*;
+import java.awt.image.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -51,7 +51,13 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     JButton timeDisplay;
     int gameTime = 5;
     
+       
     
+    int x1=320;
+    int y1=210;
+    boolean isbullet=false;
+    
+        
     newGameJPanel() {
         countDown.start();
         time.start();
@@ -126,11 +132,19 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         add(d1);    add(d2);    add(d3);    add(d4); 
         add(e1);    add(e2);    add(e3);    add(e4); 
         
+       
     }
     
+   
+   
+
     public void paintComponent(Graphics g)  {
         super.paintComponent(g);
         g.fillRect (shipX,shipY,20,20);
+        if(isbullet)
+            g.fillRect (x1,y1--,3,3);
+        if(y1<0)
+            isbullet=false;
     }
     
     //gets the options from the XML file that were saved in the options JPanel
@@ -235,8 +249,10 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
             right();
         }
         if (code == KeyEvent.VK_SPACE) {
-            bullet b = new bullet(shipX, shipY, missleSpeed);
             
+            isbullet=true;
+            x1=shipX;
+            y1=220;
         }
     }
 
