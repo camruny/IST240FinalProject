@@ -20,7 +20,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     JButton options;
     JButton instructions;
     JButton about;
-    JButton highScores;
 
     //====adds the JFrames to the window====
     instructionsJFrame injf = new instructionsJFrame();
@@ -58,9 +57,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     add(about);
     about.addActionListener(this);
     
-    highScores = new JButton("High Scores");
-    add(highScores);
-    highScores.addActionListener(this);
 }
 
     public void actionPerformed(ActionEvent e) {
