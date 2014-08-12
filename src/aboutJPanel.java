@@ -6,7 +6,6 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /*

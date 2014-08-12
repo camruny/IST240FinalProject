@@ -33,7 +33,7 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
     
     int shipX=320,shipY=220, velx=0, vely=0;
     int shipSpeed = 1;  //sets the speed that the ship will move
-    int missleSpeed = 3;  //sets the speed that the missle will travel
+    int missleSpeed = 1;  //sets the speed that the missle will travel
     int difficultyLevel;
     
     
@@ -57,10 +57,9 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
     //boolean isbullet=false;
     
     boolean isbullet;
-    int bulletNum = 1;
     
         
-    newGameJPanel() {
+    newGameJPanel() {       
         //Starts the timer and adds actionListeners to them
         countDown.start();
         time.start();
@@ -152,6 +151,16 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
             isbullet=false;
     }
     
+    public void bullet(Graphics b)  {
+        if(isbullet) {
+            b.fillRect (x1,y1--,3,3);
+        } else {
+        }
+        if(y1<0)
+            isbullet=false;
+   
+        
+    }
     //gets the options from the XML file that were saved in the options JPanel
     public void getOptions()    {
         try {
