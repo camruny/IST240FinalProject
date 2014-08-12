@@ -25,7 +25,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     instructionsJFrame injf = new instructionsJFrame();
     aboutJFrame ajf = new aboutJFrame();
     optionsJFrame ojf = new optionsJFrame();
-    OLDnewGameJFrame ngjf = new OLDnewGameJFrame();
     newGameJFrame ngf = new newGameJFrame();
 
     
@@ -37,7 +36,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
     injf.injp.close.addActionListener(this);
     ojf.ojp.close.addActionListener(this);
     ajf.ajp.close.addActionListener(this);
-    ngjf.ngjp.close.addActionListener(this);
         
     //====Options for the Navigational Buttons====
     newGame = new JButton("New Game");  
@@ -68,22 +66,7 @@ public class navigationJPanel extends JPanel implements ActionListener {
 
         if(obj == newGame)          
         {
-             // Create a frame
-		//OLDnewGameJFrame frame = new OLDnewGameJFrame();
 
-		// Create an instance of the applet
-		OLDAsteroids applet = new OLDAsteroids();
-
-		// Add the applet instance to the frame
-		//ngjf.getContentPane().add(applet,"Center");
-
-		// Invoke init() and start()
-		//applet.init();
-		//applet.start();
-                //applet.setSize(680,560);
-
-		//ngjf.setVisible(true);
-		//ngjf.setDefaultCloseOperation(OLDJFrame.EXIT_ON_CLOSE);
                 ngf.setVisible(true);
          
         }
@@ -93,7 +76,6 @@ public class navigationJPanel extends JPanel implements ActionListener {
         if(obj == injf.injp.close)  {injf.setVisible(false);}
         if(obj == ojf.ojp.close)    {ojf.setVisible(false);}
         if(obj == ajf.ajp.close)    {ajf.setVisible(false);}
-        if(obj == ngjf.ngjp.close)  {ngjf.setVisible(false);}
     }
     
 }
