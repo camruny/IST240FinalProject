@@ -40,7 +40,7 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
     public optionsJPanel()  {
         //DIFFICULTY SLIDER
         difficulty = new JSlider(JSlider.HORIZONTAL,1,3,1);
-        difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty"));
+        difficulty.setBorder(BorderFactory.createTitledBorder("Set Difficulty (Game Time)"));
         difficulty.setMajorTickSpacing(1);
         difficulty.setPaintTicks(true);
         difficulty.addChangeListener(this);
@@ -78,7 +78,7 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
         
         if(obj == save) {
     
-     	 
+            //writes the options to the "options.xml" file
             try {
               xe = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("options.xml")));
              }
@@ -165,95 +165,6 @@ public class optionsJPanel extends JPanel implements ActionListener, ChangeListe
           blocksizeAdj = (blocksize.getValue() + 6);
           blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: " + String.valueOf(blocksizeAdj)));
           
-   /*switch(blocksizeLevel){
-           case 1:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 7"));
-               break;
-           case 2:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 8"));
-               break;
-           case 3:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 9"));
-               break;
-           case 4:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 10"));
-               break;
-           case 5:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 11"));
-               break;
-           case 6:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 12"));
-               break;
-           case 7:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 13"));
-               break;
-           case 8:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 14"));
-               break;
-           case 9:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 15"));
-               break;
-           case 10:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 16"));
-               break;
-           case 11:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 17"));
-               break;
-           case 12:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 18"));
-               break;
-           case 13:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 19"));
-               break;
-           case 14:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 20"));
-               break;
-           case 15:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 21"));
-               break;
-           case 16:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 22"));
-               break;
-           case 17:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 23"));
-               break;
-           case 18:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 24"));
-               break;
-           case 19:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 25"));
-               break;
-           case 20:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 26"));
-               break;
-           case 21:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 27"));
-               break;
-           case 22:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 28"));
-               break;
-           case 23:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 29"));
-               break;
-           case 24:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 30"));
-               break;
-           case 25:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 31"));
-               break;
-           case 26:
-               blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 32"));
-               break;
-           case 27:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 33"));
-               break;
-           case 28:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 34"));
-               break;
-           case 29:
-        	   blocksize.setBorder(BorderFactory.createTitledBorder("Blocksize: 35"));
-               break; 
-   }    */
     }
     }
 }

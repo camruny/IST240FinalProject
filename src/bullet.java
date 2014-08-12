@@ -40,6 +40,7 @@ public class bullet extends JPanel implements ActionListener {
         velx = 0;
     }
     
+    
     public void paintComponent(Graphics g)  {
         super.paintComponent(g);
         System.out.println("Test");

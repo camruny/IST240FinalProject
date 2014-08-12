@@ -1,7 +1,5 @@
 
 import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,7 +24,7 @@ import javax.swing.Timer;
  *
  * @author Cameron
  */
-public class newGameJPanel extends JPanel implements ActionListener, KeyListener {
+public final class newGameJPanel extends JPanel implements ActionListener, KeyListener {
     
     Timer time = new Timer(5, this);
     Timer countDown = new Timer(1000, this);
@@ -52,13 +51,17 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     int gameTime = 5;
     
        
-    
+    //information for the bullet
     int x1=320;
     int y1=210;
-    boolean isbullet=false;
+    //boolean isbullet=false;
+    
+    boolean isbullet;
+    int bulletNum = 1;
     
         
     newGameJPanel() {
+        //Starts the timer and adds actionListeners to them
         countDown.start();
         time.start();
         addKeyListener(this);
@@ -72,6 +75,7 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         setFocusTraversalKeysEnabled(false);
         setLayout(null);
         
+        //Adds the timer button to the game
         timeDisplay = new JButton("Time Remaining: " + gameTime);
         add(timeDisplay);
         timeDisplay.setBounds(new Rectangle(135,10,300,30));
@@ -132,7 +136,6 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         add(d1);    add(d2);    add(d3);    add(d4); 
         add(e1);    add(e2);    add(e3);    add(e4); 
         
-       
     }
     
    
@@ -141,8 +144,10 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
     public void paintComponent(Graphics g)  {
         super.paintComponent(g);
         g.fillRect (shipX,shipY,20,20);
-        if(isbullet)
+        if(isbullet) {
             g.fillRect (x1,y1--,3,3);
+        } else {
+        }
         if(y1<0)
             isbullet=false;
     }
@@ -152,18 +157,18 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         try {
               de = new XMLDecoder(new BufferedInputStream(new FileInputStream("options.xml")));
              }
-          catch(Exception xx) {xx.printStackTrace();}
+          catch(FileNotFoundException xx) {}
           try {
 			 difficultyLevel = (Integer)de.readObject();
 			 shipSpeed = (Integer)de.readObject();
                          blockSize = (Integer)de.readObject();
 			 
             }
-          catch(Exception xx) {xx.printStackTrace();}
+          catch(Exception xx) {}
           try {
              de.close();
             }
-          catch(Exception xx) {xx.printStackTrace();}
+          catch(Exception xx) {}
     }
     
     //sets the time of the game based on the difficulty level
@@ -191,6 +196,8 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
         shipY += vely;
         }
         
+        
+        
         if(obj == countDown)    {
             gameTime = gameTime - 1;    //subtracts one every second to countdown the game
             timeDisplay.setText("Time Remaining: " + gameTime);
@@ -199,7 +206,11 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
                 countDown.stop();
                 timeDisplay.setText("GAME OVER!");
             }
+            
+            
         }
+        
+        
     }
     
     public void up()    {
@@ -252,7 +263,7 @@ public class newGameJPanel extends JPanel implements ActionListener, KeyListener
             
             isbullet=true;
             x1=shipX;
-            y1=220;
+            y1=shipY;
         }
     }
 

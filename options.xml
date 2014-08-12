@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_05" class="java.beans.XMLDecoder">
- <int>3</int>
- <int>4</int>
- <int>10</int>
+ <int>1</int>
+ <int>1</int>
+ <int>20</int>
 </java>
