@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 
@@ -25,9 +26,10 @@ import javax.swing.Timer;
  * @author Cameron
  */
 public final class newGameJPanel extends JPanel implements ActionListener, KeyListener {
-    
+
     Timer time = new Timer(5, this);
     Timer countDown = new Timer(1000, this);
+    Timer scoreUpdate = new Timer(100, this);
     
     XMLDecoder de;
     
@@ -54,15 +56,18 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
     //information for the bullet
     int x1=320;
     int y1=210;
-    //boolean isbullet=false;
-    
     boolean isbullet;
+    
+    //Shows the players score
+    int score = 0;
+    JTextField scoreDisplay;
     
         
     newGameJPanel() {       
         //Starts the timer and adds actionListeners to them
         countDown.start();
         time.start();
+        scoreUpdate.start();
         addKeyListener(this);
         setFocusable(true);
         
@@ -135,6 +140,10 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
         add(d1);    add(d2);    add(d3);    add(d4); 
         add(e1);    add(e2);    add(e3);    add(e4); 
         
+        //adds the score board to the game
+        scoreDisplay = new JTextField();
+        scoreDisplay.setBounds(new Rectangle(10,10,100,30));
+        add(scoreDisplay);
     }
     
    
@@ -203,6 +212,48 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
         repaint();
         shipX += velx;
         shipY += vely;
+        
+        
+        
+        //impact sensing for Column 1 of blocks
+        if(x1 > 50 && x1 < (50+(blockSize*2)))   {  
+            if(y1 == 50)    {if(a1.isVisible()==true)    {a1.setVisible(false); score++; isbullet = false;}} 
+            if(y1 == 80)    {if(a2.isVisible()==true)    {a2.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 110)   {if(a3.isVisible()==true)    {a3.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 140)   {if(a4.isVisible()==true)    {a4.setVisible(false); score++; isbullet = false;}}
+        }
+        //impact sensing for Column 2 of blocks
+        if(x1 > 150 && x1 < (150+(blockSize*2)))   {  
+            if(y1 == 50)    {if(b1.isVisible()==true)    {b1.setVisible(false); score++; isbullet = false;}} 
+            if(y1 == 80)    {if(b2.isVisible()==true)    {b2.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 110)   {if(b3.isVisible()==true)    {b3.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 140)   {if(b4.isVisible()==true)    {b4.setVisible(false); score++; isbullet = false;}}
+        }
+        //impact sensing for Column 3 of blocks
+        if(x1 > 250 && x1 < (250+(blockSize*2)))   {  
+            if(y1 == 50)    {if(c1.isVisible()==true)    {c1.setVisible(false); score++; isbullet = false;}} 
+            if(y1 == 80)    {if(c2.isVisible()==true)    {c2.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 110)   {if(c3.isVisible()==true)    {c3.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 140)   {if(c4.isVisible()==true)    {c4.setVisible(false); score++; isbullet = false;}}
+        }
+        //impact sensing for Column 4 of blocks
+        if(x1 > 350 && x1 < (350+(blockSize*2)))   {  
+            if(y1 == 50)    {if(d1.isVisible()==true)    {d1.setVisible(false); score++; isbullet = false;}} 
+            if(y1 == 80)    {if(d2.isVisible()==true)    {d2.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 110)   {if(d3.isVisible()==true)    {d3.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 140)   {if(d4.isVisible()==true)    {d4.setVisible(false); score++; isbullet = false;}}
+        }
+        //impact sensing for Column 5 of blocks
+        if(x1 > 450 && x1 < (450+(blockSize*2)))   {  
+            if(y1 == 50)    {if(e1.isVisible()==true)    {e1.setVisible(false); score++; isbullet = false;}} 
+            if(y1 == 80)    {if(e2.isVisible()==true)    {e2.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 110)   {if(e3.isVisible()==true)    {e3.setVisible(false); score++; isbullet = false;}}
+            if(y1 == 140)   {if(e4.isVisible()==true)    {e4.setVisible(false); score++; isbullet = false;}}
+        }
+        
+        
+
+
         }
         
         
@@ -214,12 +265,13 @@ public final class newGameJPanel extends JPanel implements ActionListener, KeyLi
                 time.stop();
                 countDown.stop();
                 timeDisplay.setText("GAME OVER!");
-            }
-            
-            
+            } 
+        } 
+        
+        if(obj == scoreUpdate)  {
+            //updates the score display
+            scoreDisplay.setText("Score: " + String.valueOf(score));
         }
-        
-        
     }
     
     public void up()    {
