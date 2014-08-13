@@ -2,14 +2,14 @@
 <java version="1.6.0_65" class="java.beans.XMLDecoder">
 	<score>
 		<name>Ryan</name>
-		<value>190239</value>
+		<value>19</value>
 	</score>
 	<score>
 		<name>Cameron</name>
-		<value>98374</value>
+		<value>09</value>
 	</score>
 	<score>
 		<name>John</name>
-		<value>91082</value>
+		<value>25</value>
 	</score>
 </java>
